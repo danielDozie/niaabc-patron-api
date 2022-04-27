@@ -35,4 +35,7 @@ export class User {
     @Column()
     image: string
 
+    @Column()
+    lead_position: string
+
 }
