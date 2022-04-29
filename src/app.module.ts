@@ -16,7 +16,7 @@ import { ConfigModule } from '@nestjs/config';
     "database": process.env.DATABASE,
     "entities": entities,
     "synchronize": false,
-    //"socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
+    "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
   }), UsersModule],
   controllers: [AppController],
   providers: [AppService],
