@@ -38,4 +38,7 @@ export class User {
     @Column()
     lead_position: string
 
+    @Column()
+    slug: string
+
 }
