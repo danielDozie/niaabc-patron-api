@@ -1,4 +1,5 @@
-import {User}  from "src/users/user.entity";
+import { User } from "src/users/user.entity";
+import { Fee } from "src/fees/fees.entity";
 
-const entities = [User];
-export default entities
+const entities = [User, Fee];
+export default entities;

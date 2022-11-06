@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -5,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from 'typeOrm/entities';
 import { ConfigModule } from '@nestjs/config';
+import { FeesModule } from './fees/fees.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),TypeOrmModule.forRoot({
@@ -17,7 +19,7 @@ import { ConfigModule } from '@nestjs/config';
     "entities": entities,
     "synchronize": false,
     "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
-  }), UsersModule],
+  }), UsersModule, FeesModule],
   controllers: [AppController],
   providers: [AppService],
 })

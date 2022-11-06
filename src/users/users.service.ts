@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -16,5 +17,9 @@ export class UsersService {
     
     async findOneMember(slug: string): Promise<object> {
         return await this.userRepository.findOne(slug); 
+    }
+
+    async findOneMemberByDMN(dmn: number): Promise<object> {
+        return await this.userRepository.findOne(dmn); 
     }
 }

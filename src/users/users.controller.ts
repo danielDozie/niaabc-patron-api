@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Controller, Get, Param } from "@nestjs/common";
 import {UsersService} from "../users/users.service";
 
@@ -15,6 +16,11 @@ export class UsersController {
     @Get(':slug')
     findOneMember(@Param() slug:string): object {
         return this.usersService.findOneMember(slug);
+    }
+
+    @Get('/dmn/:dmn')
+    findOneMemberByDMN(@Param() dmn:number): object {
+        return this.usersService.findOneMemberByDMN(dmn);
     }
 
 }
