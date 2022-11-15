@@ -34,6 +34,15 @@ export class User {
     payment_status: string
 
     @Column()
+    payment_date: string
+
+    @Column()
+    payment_reference_no: string
+
+    @Column({length: 250, nullable: true})
+    amount_owed: string
+
+    @Column()
     image: string
 
     @Column()

@@ -11,7 +11,7 @@ export class UsersService {
         private readonly userRepository: Repository<User>,
     ) {}
     
-    async getUsers(): Promise<object[]> {
+    async getMembers(): Promise<object[]> {
         return await this.userRepository.find();
     }
     
@@ -21,5 +21,9 @@ export class UsersService {
 
     async findOneMemberByDMN(dmn: number): Promise<object> {
         return await this.userRepository.findOne(dmn); 
+    }
+
+    async updateOneMember(id:number, user: User): Promise<object> {
+        return await this.userRepository.update(id, user);
     }
 }
