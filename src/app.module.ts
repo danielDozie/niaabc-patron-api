@@ -18,6 +18,7 @@ import { FeesModule } from './fees/fees.module';
     "database": process.env.DATABASE,
     "entities": entities,
     "synchronize": false,
+    //"logging": true, //remove in production
     "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
   }), UsersModule, FeesModule],
   controllers: [AppController],

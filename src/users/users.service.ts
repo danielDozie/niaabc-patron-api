@@ -11,16 +11,33 @@ export class UsersService {
         private readonly userRepository: Repository<User>,
     ) {}
     
-    async getMembers(): Promise<object[]> {
-        return await this.userRepository.find();
+    async getMembers(): Promise<User[]> {
+        return await this.userRepository
+            .createQueryBuilder('user')
+            .leftJoinAndSelect("user.invoice", "invoice")
+            .orderBy("user.id", "ASC")
+            .addOrderBy('invoice.id', 'DESC')
+            .getMany()
     }
     
-    async findOneMember(slug: string): Promise<object> {
-        return await this.userRepository.findOne(slug); 
+    async findOneMember(slug: string): Promise<User> {
+        return await this.userRepository
+            .createQueryBuilder('user')
+            .leftJoinAndSelect("user.invoice", "invoice")
+            .where("user.slug = :slug", { slug: slug["slug"] })
+            .orderBy("user.id", "ASC")
+            .addOrderBy('invoice.id', 'DESC')
+            .getOne()
     }
 
-    async findOneMemberByDMN(dmn: number): Promise<object> {
-        return await this.userRepository.findOne(dmn); 
+    async findOneMemberByDMN(dmn: number): Promise<User> {
+        return await this.userRepository
+            .createQueryBuilder('user')
+            .leftJoinAndSelect("user.invoice", "invoice")
+            .where("user.dmn = :dmn", { dmn: dmn["dmn"] })
+            .orderBy("user.id", "ASC")
+            .addOrderBy('invoice.id', 'DESC')
+            .getOne()
     }
 
     async updateOneMember(id:number, user: User): Promise<object> {
