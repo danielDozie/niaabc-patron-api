@@ -1,5 +1,5 @@
 import { Entity, Column, OneToMany, JoinColumn, PrimaryColumn } from "typeorm";
-import { Invoice } from "./invoice.entity";
+import { Invoice } from "../invoice/invoice.entity";
 
 @Entity("cm_contacts")
 export class User {

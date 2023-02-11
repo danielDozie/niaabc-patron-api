@@ -12,32 +12,35 @@ export class UsersService {
     ) {}
     
     async getMembers(): Promise<User[]> {
-        return await this.userRepository
+        const query = await this.userRepository
             .createQueryBuilder('user')
             .leftJoinAndSelect("user.invoice", "invoice")
             .orderBy("user.id", "ASC")
             .addOrderBy('invoice.id', 'DESC')
-            .getMany()
+            .getMany();
+        return query
     }
     
     async findOneMember(slug: string): Promise<User> {
-        return await this.userRepository
+        const query = await this.userRepository
             .createQueryBuilder('user')
             .leftJoinAndSelect("user.invoice", "invoice")
             .where("user.slug = :slug", { slug: slug["slug"] })
             .orderBy("user.id", "ASC")
             .addOrderBy('invoice.id', 'DESC')
-            .getOne()
+            .getOne();
+        return query
     }
 
     async findOneMemberByDMN(dmn: number): Promise<User> {
-        return await this.userRepository
+        const query = await this.userRepository
             .createQueryBuilder('user')
             .leftJoinAndSelect("user.invoice", "invoice")
             .where("user.dmn = :dmn", { dmn: dmn["dmn"] })
             .orderBy("user.id", "ASC")
             .addOrderBy('invoice.id', 'DESC')
-            .getOne()
+            .getOne();
+        return query
     }
 
     async updateOneMember(id:number, user: User): Promise<object> {

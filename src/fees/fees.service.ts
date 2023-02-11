@@ -11,8 +11,14 @@ export class FeesService {
         private readonly feeRepository: Repository<Fee>,
     ) {}
     
-    async getFees(): Promise<object[]> {
+    async getFees(): Promise<Fee[]> {
         return await this.feeRepository.find();
     }
     
+    async getFeeByName(name: string): Promise<Fee> {
+        return await this.feeRepository
+            .createQueryBuilder('fee')
+            .where("fee.name = :name", {name})
+            .getOne();
+    }
 }

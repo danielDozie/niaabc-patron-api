@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import entities from 'typeOrm/entities';
 import { ConfigModule } from '@nestjs/config';
 import { FeesModule } from './fees/fees.module';
+import { InvoiceModule } from './invoice/invoice.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),TypeOrmModule.forRoot({
@@ -20,7 +21,7 @@ import { FeesModule } from './fees/fees.module';
     "synchronize": false,
     //"logging": true, //remove in production
     "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
-  }), UsersModule, FeesModule],
+  }), UsersModule, FeesModule, InvoiceModule],
   controllers: [AppController],
   providers: [AppService],
 })
